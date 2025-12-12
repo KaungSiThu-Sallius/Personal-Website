@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kaung Si Thu - The Analyst</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+          colors: {
+            sage: {
+              50: '#f4f7f5',
+              100: '#e3ebe5',
+              200: '#c5d9c9',
+              300: '#9dbfba',
+              400: '#84a98c',
+              500: '#52796f',
+              600: '#354f52',
+              700: '#2f3e46',
+              800: '#283136',
+              900: '#22272a',
+            },
+            // Overriding 'slate' with a warmer, slightly creamy/yellow-tinted palette
+            slate: {
+              50: '#FDFBF7',  // Warmer cream/off-white (hint of yellow)
+              100: '#F2F0E9', // Warmer beige/light grey
+              200: '#E6E4DD', // Borders with warm undertone
+              300: '#D6D3D1',
+              400: '#A8A29E',
+              500: '#78716C',
+              600: '#57534E',
+              700: '#44403C', // Warm dark grey text
+              800: '#292524', // Headings
+              900: '#1C1917',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom scrollbar for Webkit */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #F2F0E9;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #84a98c;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #52796f;
+    }
+  </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1"
+  }
+}
+</script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+
+<body class="bg-slate-50 text-slate-700 antialiased selection:bg-sage-200 selection:text-sage-800">
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
+</html>
