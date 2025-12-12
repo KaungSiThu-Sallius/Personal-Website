@@ -5,7 +5,7 @@ import { USER_INFO } from '../constants';
 
 const Hero: React.FC = () => {
   return (
-    <section id="about" className="relative min-h-screen flex items-center justify-center pt-16 pb-24 md:pb-20 overflow-hidden border-b border-slate-200 bg-slate-50/50">
+    <section id="about" className="relative flex items-center justify-center pt-32 pb-24 md:pb-32 lg:pb-0 lg:min-h-screen overflow-hidden border-b border-slate-200 bg-slate-50/50">
 
       {/* Soft Background Gradient Blobs */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
