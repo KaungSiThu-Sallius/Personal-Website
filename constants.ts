@@ -3,7 +3,7 @@ import { Project, Skill, Education, BlogPost } from './types';
 
 export const USER_INFO = {
   name: "Kaung Si Thu",
-  title: "Data Analyst | Junior Data Scientist",
+  title: "Junior Data Scientist | Data Analyst",
   tagline: "Turning raw data into actionable insights through predictive modeling and visualization.",
   about: "Data Scientist with a focus on predictive modeling and business intelligence. I specialize in uncovering hidden patterns within complex datasets to drive smarter, data-backed decision-making using Python, SQL, Tableau and Machine Learning.",
   profileImage: "./assets/my_img.png",
