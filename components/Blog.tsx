@@ -9,9 +9,10 @@ const Blog: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   // Calculate pagination
-  const totalPages = Math.ceil(BLOG_POSTS.length / ITEMS_PER_PAGE);
+  const sortedPosts = [...BLOG_POSTS].reverse();
+  const totalPages = Math.ceil(sortedPosts.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const currentPosts = BLOG_POSTS.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  const currentPosts = sortedPosts.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
   const handlePageChange = (newPage: number) => {
     if (newPage >= 1 && newPage <= totalPages) {

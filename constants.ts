@@ -157,6 +157,17 @@ export const PROJECTS: Project[] = [
     demoUrl: "https://resume-ats-score-checker.streamlit.app/",
     githubUrl: "https://github.com/KaungSiThu-Sallius/The-Resume-Roaster.git",
     demoLabel: "View Project"
+  },
+  {
+    id: 11,
+    title: "LogiRisk AI: Predictive Supply Chain Risk Auditor",
+    description: "An end-to-end MLOps solution that identifies high-risk logistics shipments using XGBoost. Features a real-time feature engineering pipeline with a decoupled architecture using FastAPI on Google Cloud Run and a Streamlit dashboard on Hugging Face.",
+    category: "Machine Learning",
+    tags: ["FastAPI", "XGBoost", "Docker", "GCP", "MLflow", "Streamlit"],
+    imageUrl: "./assets/logiRisk.png",
+    demoUrl: "https://huggingface.co/spaces/kaungsithu-sallius/logistics-risk-auditor",
+    githubUrl: "https://github.com/KaungSiThu-Sallius/LogiRisk-ML.git",
+    demoLabel: "View Live Dashboard"
   }
 
 ];
@@ -181,5 +192,14 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: "4 min read",
     imageUrl: "./assets/resume_article.png",
     url: "https://medium.com/@kaungsithu.sallius/how-i-built-an-ai-powered-resume-scanner-using-python-streamlit-7378e13561fd"
+  },
+  {
+    id: 3,
+    title: "Scaling Logistics Intelligence: Building an End-to-End Predictive Risk Auditor",
+    excerpt: "Moving beyond the notebook to build a production-grade supply chain auditor. Explore how I leveraged MLflow for experiment tracking and Google Cloud Run for serverless inference to transform raw shipping logs into proactive 'Revenue at Risk' insights.",
+    date: "Feb 24, 2026",
+    readTime: "3 min read",
+    imageUrl: "./assets/logi_risk_article.png",
+    url: "https://medium.com/@kaungsithu.sallius/scaling-logistics-intelligence-building-an-end-to-end-predictive-risk-auditor-2cef8cdf8aa1"
   },
 ];
