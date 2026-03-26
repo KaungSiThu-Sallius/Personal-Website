@@ -183,7 +183,7 @@ export const PROJECTS: Project[] = [
 
 ];
 
-export const PROJECT_CATEGORIES = ["All", "Machine Learning", "Python", "Tableau", "Excel", "SQL"];
+export const PROJECT_CATEGORIES = ["All", "Python/Machine Learning", "LLM", "Tableau", "Excel", "SQL"];
 
 export const BLOG_POSTS: BlogPost[] = [
   {
