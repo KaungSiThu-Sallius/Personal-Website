@@ -3,7 +3,7 @@ export interface Project {
   id: number;
   title: string;
   description: string;
-  category: 'Machine Learning' | 'Excel' | 'Tableau' | 'Python' | 'SQL' | 'All';
+  category: 'Python/Machine Learning' | 'LLM' | 'Excel' | 'Tableau' | 'SQL' | 'All';
   tags: string[];
   imageUrl: string;
   githubUrl?: string;

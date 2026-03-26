@@ -83,7 +83,7 @@ export const PROJECTS: Project[] = [
     id: 4,
     title: "Forecasting Tourism Demand in Singapore",
     description: "A data-driven project leveraging historical tourism data, weather patterns, and major events to predict tourism demand in Singapore. Features regression analysis, forecasting models, and interactive visualizations to provide actionable insights for stakeholders in the tourism industry.",
-    category: "Machine Learning",
+    category: "Python/Machine Learning",
     tags: ["python", "Scikit-Learn", "Pandas"],
     imageUrl: "./assets/tourism_demand.png",
     githubUrl: "https://github.com/KaungSiThu-Sallius/Forecasting-Tourism-Demand-in-Singapore.git",
@@ -119,7 +119,7 @@ export const PROJECTS: Project[] = [
     id: 7,
     title: "Spotify Playlist Data Pipeline and Analysis",
     description: "Automated data pipeline that authenticates with the Spotify API to extract playlist track metrics, cleans and structures the data into CSV format, and performs exploratory analysis to identify popularity trends and top-performing artists.",
-    category: "Python",
+    category: "Python/Machine Learning",
     tags: ["Python", "Pandas", "SQLite3"],
     imageUrl: "./assets/spotify_analysis.png",
     githubUrl: "https://github.com/KaungSiThu-Sallius/Data-Pipeline-From-Spotify-API-to-SQL-with-Python.git",
@@ -129,7 +129,7 @@ export const PROJECTS: Project[] = [
     id: 8,
     title: "Unemployment Analysis and Prediction in India and Pakistan",
     description: "A high-precision economic forecasting model for India and Pakistan. Leveraged XGBoost and Random Forest to analyze key indicators like GDP and inflation, achieving a near-perfect Test R² score of 0.96.",
-    category: "Machine Learning",
+    category: "Python/Machine Learning",
     tags: ["python", "Scikit-Learn", "Plotly", "Pandas"],
     imageUrl: "./assets/unemployment_project.png",
     githubUrl: "https://github.com/KaungSiThu-Sallius/Unemployment-Analysis-and-Prediction-in-India-and-Pakistan.git",
@@ -140,7 +140,7 @@ export const PROJECTS: Project[] = [
     id: 9,
     title: "HDB Resale Price Prediction and Analysis",
     description: "Built a high-performance regression model to forecast Singapore HDB prices. Using XGBoost, the model explains 97% of price variance (R² 0.97) by analyzing key drivers like floor area, location, and lease tenure to aid financial decision-making.",
-    category: "Machine Learning",
+    category: "Python/Machine Learning",
     tags: ["python", "Scikit-Learn", "Pandas", "Plotly"],
     imageUrl: "./assets/hdb_project.png",
     githubUrl: "https://github.com/KaungSiThu-Sallius/HDB-Resale-Prices-Prediction.git",
@@ -151,23 +151,34 @@ export const PROJECTS: Project[] = [
     id: 10,
     title: "Resume ATS Score Checker and Ranking Engine",
     description: "An end-to-end NLP pipeline that scores resumes using TF-IDF Vectorization and Cosine Similarity. Features a dual-interface: a real-time optimizer for candidates and an automated ranking dashboard for recruiters to filter talent at scale.",
-    category: "Machine Learning",
+    category: "Python/Machine Learning",
     tags: ["Python", "NLP", "Streamlit", "Scikit-Learn"],
     imageUrl: "./assets/resume_checker.png",
     demoUrl: "https://resume-ats-score-checker.streamlit.app/",
     githubUrl: "https://github.com/KaungSiThu-Sallius/The-Resume-Roaster.git",
-    demoLabel: "View Project"
+    demoLabel: "View Live Project"
   },
   {
     id: 11,
     title: "LogiRisk AI: Predictive Supply Chain Risk Auditor",
     description: "An end-to-end MLOps solution that identifies high-risk logistics shipments using XGBoost. Features a real-time feature engineering pipeline with a decoupled architecture using FastAPI on Google Cloud Run and a Streamlit dashboard on Hugging Face.",
-    category: "Machine Learning",
+    category: "Python/Machine Learning",
     tags: ["FastAPI", "XGBoost", "Docker", "GCP", "MLflow", "Streamlit"],
     imageUrl: "./assets/logiRisk.png",
     demoUrl: "https://huggingface.co/spaces/kaungsithu-sallius/logistics-risk-auditor",
     githubUrl: "https://github.com/KaungSiThu-Sallius/LogiRisk-ML.git",
-    demoLabel: "View Live Dashboard"
+    demoLabel: "View Live Project"
+  },
+  {
+    id: 12,
+    title: "QueryMate — AI SQL Assistant",
+    description: "QueryMate bridges the gap between non-technical users and complex relational databases. By converting plain English into high-performance SQL, it enables anyone to extract deep business insights instantly, no coding required.",
+    category: "LLM",
+    tags: ["Streamlit", "Google Gemini", "ChromaDB", "PostgresSQL"],
+    imageUrl: "./assets/querymate.png",
+    demoUrl: "https://querymate-ttog.onrender.com/",
+    githubUrl: "https://github.com/KaungSiThu-Sallius/LogiRisk-ML.git",
+    demoLabel: "View Live Project"
   }
 
 ];
