@@ -219,7 +219,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: "In the modern data landscape, the gap between “having data” and “getting answers” is often a wall of SQL code. While data scientists and engineers can navigate complex relational schemas with ease, business stakeholders are often left waiting in a “ticket queue” for simple reports.",
     date: "Mar 26, 2026",
     readTime: "3 min read",
-    imageUrl: "./querymate_article.png",
+    imageUrl: "./assets/querymate_article.png",
     url: "https://medium.com/@kaungsithu.sallius/querymate-how-i-built-a-rag-powered-sql-assistant-for-real-world-e-commerce-data-f43d5aa14cdf"
   },
 ];
