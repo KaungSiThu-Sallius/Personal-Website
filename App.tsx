@@ -13,8 +13,9 @@ import ScrollToTop from './components/ScrollToTop';
 const App: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col">
+      <a className="skip-link" href="#main-content">Skip to content</a>
       <Navbar />
-      <main className="flex-grow">
+      <main id="main-content" tabIndex={-1} className="flex-grow">
         <Hero />
         <Skills />
         <Education />

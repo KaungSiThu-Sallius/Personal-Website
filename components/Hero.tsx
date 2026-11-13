@@ -1,9 +1,45 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Download, ChevronDown, X, BarChart2, BrainCircuit } from 'lucide-react';
 import { USER_INFO } from '../constants';
 
 const ResumeModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
+  const dialogRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const previousActiveElement = document.activeElement;
+    const dialog = dialogRef.current;
+    const focusableElements = dialog?.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    );
+    focusableElements?.[0]?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onClose();
+        return;
+      }
+
+      if (event.key !== 'Tab' || !focusableElements?.length) return;
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      if (previousActiveElement instanceof HTMLElement) previousActiveElement.focus();
+    };
+  }, [onClose]);
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
@@ -11,12 +47,17 @@ const ResumeModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       onClick={onClose}
     >
       <div
+        ref={dialogRef}
         className="relative bg-white rounded-2xl shadow-2xl w-full max-w-md p-8"
         style={{ animation: 'modalFadeIn 0.25s ease-out' }}
         onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="resume-dialog-title"
       >
         {/* Close button */}
         <button
+          type="button"
           onClick={onClose}
           className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 transition-colors"
           aria-label="Close modal"
@@ -29,7 +70,7 @@ const ResumeModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-sage-100 mb-4">
             <Download className="text-sage-500 h-7 w-7" />
           </div>
-          <h2 className="text-2xl font-serif font-bold text-slate-800 mb-1">Download Resume</h2>
+          <h2 id="resume-dialog-title" className="text-2xl font-serif font-bold text-slate-800 mb-1">Download Resume</h2>
           <p className="text-slate-500 text-sm">Choose the resume that fits your needs</p>
         </div>
 
@@ -66,7 +107,7 @@ const ResumeModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           </a>
         </div>
 
-        <p className="text-center text-xs text-slate-400 mt-6">Click outside to close</p>
+        <p className="text-center text-xs text-slate-400 mt-6">Press Escape or click outside to close</p>
       </div>
 
       <style>{`
@@ -102,6 +143,9 @@ const Hero: React.FC = () => {
               <img
                 src={USER_INFO.profileImage}
                 alt={USER_INFO.name}
+                width="1122"
+                height="1402"
+                fetchPriority="high"
                 className="relative w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-white shadow-xl transition-transform duration-500 group-hover:scale-105"
               />
             </div>

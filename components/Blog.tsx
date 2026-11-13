@@ -38,10 +38,12 @@ const Blog: React.FC = () => {
               key={post.id} 
               className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 border border-slate-100 flex flex-col group h-full"
             >
-              <a href={post.url} className="block overflow-hidden h-48 relative flex-shrink-0">
+              <a href={post.url} target="_blank" rel="noopener noreferrer" className="block overflow-hidden h-48 relative flex-shrink-0" aria-label={`Read ${post.title}`}>
                 <img 
                   src={post.imageUrl} 
                   alt={post.title} 
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-slate-900/0 transition-colors"></div>
@@ -60,7 +62,7 @@ const Blog: React.FC = () => {
                 </div>
 
                 <h3 className="text-lg font-serif font-bold text-slate-800 mb-3 line-clamp-2 group-hover:text-sage-600 transition-colors">
-                  <a href={post.url}>{post.title}</a>
+                  <a href={post.url} target="_blank" rel="noopener noreferrer">{post.title}</a>
                 </h3>
                 
                 <p className="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">
@@ -69,6 +71,8 @@ const Blog: React.FC = () => {
 
                 <a 
                   href={post.url} 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center text-sm font-medium text-sage-600 hover:text-sage-800 mt-auto"
                 >
                   Read Article 
@@ -85,6 +89,7 @@ const Blog: React.FC = () => {
             <button 
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}
+              aria-label="Previous blog page"
               className={`p-2 rounded-full border ${currentPage === 1 ? 'border-slate-200 text-slate-300 cursor-not-allowed' : 'border-slate-300 text-slate-600 hover:bg-white hover:text-sage-600'}`}
             >
               <ChevronLeft size={20} />
@@ -97,6 +102,7 @@ const Blog: React.FC = () => {
             <button 
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage === totalPages}
+              aria-label="Next blog page"
               className={`p-2 rounded-full border ${currentPage === totalPages ? 'border-slate-200 text-slate-300 cursor-not-allowed' : 'border-slate-300 text-slate-600 hover:bg-white hover:text-sage-600'}`}
             >
               <ChevronRight size={20} />

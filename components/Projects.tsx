@@ -55,6 +55,7 @@ const Projects: React.FC = () => {
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
+                aria-pressed={activeCategory === category}
                 className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeCategory === category
                   ? 'bg-sage-600 text-white shadow-md'
                   : 'bg-slate-50 text-slate-600 border border-slate-200 hover:border-sage-300 hover:text-sage-600'
@@ -76,6 +77,8 @@ const Projects: React.FC = () => {
                 <img
                   src={project.imageUrl}
                   alt={project.title}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/10 transition-colors duration-300"></div>
@@ -107,6 +110,7 @@ const Projects: React.FC = () => {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`View ${project.title} source code on GitHub`}
                       className="flex items-center text-slate-600 hover:text-slate-900 font-medium transition-colors text-sm"
                     >
                       <Github size={18} className="mr-2" />
@@ -118,6 +122,7 @@ const Projects: React.FC = () => {
                       href={project.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`${project.demoLabel || 'View live project'} for ${project.title}`}
                       className="flex items-center text-sage-600 hover:text-sage-800 font-medium transition-colors text-sm ml-auto"
                     >
                       {project.demoLabel || "View Live"}
@@ -142,6 +147,7 @@ const Projects: React.FC = () => {
             <button
               onClick={() => handlePageChange(safeCurrentPage - 1)}
               disabled={safeCurrentPage === 1}
+              aria-label="Previous projects page"
               className={`p-2 rounded-full border ${safeCurrentPage === 1 ? 'border-slate-100 text-slate-300 cursor-not-allowed' : 'border-slate-300 text-slate-600 hover:bg-slate-50 hover:text-sage-600'}`}
             >
               <ChevronLeft size={20} />
@@ -151,6 +157,8 @@ const Projects: React.FC = () => {
               <button
                 key={page}
                 onClick={() => handlePageChange(page)}
+                aria-label={`Projects page ${page}`}
+                aria-current={safeCurrentPage === page ? 'page' : undefined}
                 className={`w-10 h-10 rounded-full font-medium transition-all ${safeCurrentPage === page
                   ? 'bg-sage-600 text-white shadow-md'
                   : 'text-slate-600 hover:bg-slate-50'
@@ -163,6 +171,7 @@ const Projects: React.FC = () => {
             <button
               onClick={() => handlePageChange(safeCurrentPage + 1)}
               disabled={safeCurrentPage === totalPages}
+              aria-label="Next projects page"
               className={`p-2 rounded-full border ${safeCurrentPage === totalPages ? 'border-slate-100 text-slate-300 cursor-not-allowed' : 'border-slate-300 text-slate-600 hover:bg-slate-50 hover:text-sage-600'}`}
             >
               <ChevronRight size={20} />

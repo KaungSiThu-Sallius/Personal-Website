@@ -29,6 +29,7 @@ const Contact: React.FC = () => {
           <a
             href={USER_INFO.linkedin}
             target="_blank"
+            rel="noopener noreferrer"
             className="w-full sm:w-auto flex items-center justify-center px-8 py-4 bg-[#0077b5] text-white rounded-xl font-medium hover:bg-[#006399] transition-all shadow-lg hover:shadow-xl group"
           >
             <Linkedin className="mr-3 h-5 w-5 group-hover:scale-110 transition-transform" />

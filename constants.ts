@@ -177,7 +177,7 @@ export const PROJECTS: Project[] = [
     tags: ["Streamlit", "Google Gemini", "ChromaDB", "PostgresSQL"],
     imageUrl: "./assets/querymate.png",
     demoUrl: "https://querymate-ttog.onrender.com/",
-    githubUrl: "https://github.com/KaungSiThu-Sallius/LogiRisk-ML.git",
+    githubUrl: "https://github.com/KaungSiThu-Sallius/QueryMate.git",
     demoLabel: "View Live Project"
   }
 
