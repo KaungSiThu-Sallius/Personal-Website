@@ -1,7 +1,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Download, ChevronDown, X, BarChart2, BrainCircuit } from 'lucide-react';
+import { Download, ChevronDown, X, BarChart2, BrainCircuit, ArrowRight } from 'lucide-react';
 import { USER_INFO } from '../constants';
+import { PortfolioTrack } from '../types';
 
 const ResumeModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -120,8 +121,12 @@ const ResumeModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   );
 };
 
-const Hero: React.FC = () => {
+const Hero: React.FC<{ onSelectTrack: (track: PortfolioTrack) => void }> = ({ onSelectTrack }) => {
   const [showResumeModal, setShowResumeModal] = useState(false);
+  const selectTrack = (track: PortfolioTrack) => {
+    onSelectTrack(track);
+    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <>
@@ -155,27 +160,77 @@ const Hero: React.FC = () => {
             </h1>
 
             <p className="text-xl md:text-2xl text-slate-500 mb-6 font-light max-w-4xl mx-auto">
-              {USER_INFO.title}
+              Data Analyst <span aria-hidden="true">·</span> Data Scientist
             </p>
 
-            <p className="text-slate-600 mb-10 max-w-xl mx-auto leading-relaxed">
-              {USER_INFO.about}
+            <p className="text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+              Turning complex data into useful insights—from SQL analysis and dashboards to predictive models and machine learning.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button
-                onClick={() => setShowResumeModal(true)}
-                className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-sage-400 hover:bg-sage-500 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
-              >
-                <Download className="mr-2 h-5 w-5" />
-                Download Resume
-              </button>
-              <a
-                href="#projects"
-                className="inline-flex items-center justify-center px-8 py-3 border border-slate-300 text-base font-medium rounded-full text-slate-700 bg-white hover:bg-slate-50 transition-all shadow-sm hover:shadow-md"
-              >
-                View Projects
-              </a>
+            <div className="grid w-full max-w-4xl grid-cols-1 gap-4 text-left md:grid-cols-2">
+              <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md">
+                <div className="mb-3 flex items-center gap-3">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                    <BarChart2 aria-hidden="true" size={22} />
+                  </span>
+                  <div>
+                    <h2 className="font-semibold text-slate-800">Data Analyst</h2>
+                    <p className="text-sm text-slate-500">SQL · Tableau · Excel</p>
+                  </div>
+                </div>
+                <p className="mb-4 text-sm leading-relaxed text-slate-600">Explore dashboards, business analysis, and data-driven insights.</p>
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <button
+                    type="button"
+                    onClick={() => selectTrack('analyst')}
+                    className="inline-flex items-center font-semibold text-sage-700 hover:text-sage-900"
+                  >
+                    Explore analyst projects <ArrowRight aria-hidden="true" size={16} className="ml-1" />
+                  </button>
+                  <a
+                    href="/Data Analyst Resume (Kaung Si Thu).pdf"
+                    download="Data Analyst Resume - Kaung Si Thu.pdf"
+                    className="inline-flex items-center text-sm font-medium text-slate-500 hover:text-sage-700"
+                  >
+                    <Download aria-hidden="true" size={15} className="mr-1" /> Resume
+                  </a>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md">
+                <div className="mb-3 flex items-center gap-3">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-purple-50 text-purple-600">
+                    <BrainCircuit aria-hidden="true" size={22} />
+                  </span>
+                  <div>
+                    <h2 className="font-semibold text-slate-800">Data Scientist</h2>
+                    <p className="text-sm text-slate-500">Python · ML · AI</p>
+                  </div>
+                </div>
+                <p className="mb-4 text-sm leading-relaxed text-slate-600">Explore predictive modeling, machine learning, and data products.</p>
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <button
+                    type="button"
+                    onClick={() => selectTrack('scientist')}
+                    className="inline-flex items-center font-semibold text-sage-700 hover:text-sage-900"
+                  >
+                    Explore data science projects <ArrowRight aria-hidden="true" size={16} className="ml-1" />
+                  </button>
+                  <a
+                    href="/Data Science Resume (Kaung Si Thu).pdf"
+                    download="Data Science Resume - Kaung Si Thu.pdf"
+                    className="inline-flex items-center text-sm font-medium text-slate-500 hover:text-sage-700"
+                  >
+                    <Download aria-hidden="true" size={15} className="mr-1" /> Resume
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-slate-500">
+              <span>Currently pursuing an MSc in Data Science</span>
+              <span aria-hidden="true" className="hidden sm:inline">·</span>
+              <a href="#contact" className="font-medium text-sage-700 hover:text-sage-900">Available to connect</a>
             </div>
           </div>
         </div>

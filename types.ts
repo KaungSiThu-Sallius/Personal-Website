@@ -11,6 +11,8 @@ export interface Project {
   demoLabel?: string; // e.g., "View Tableau" or "View Spreadsheet"
 }
 
+export type PortfolioTrack = 'all' | 'analyst' | 'scientist';
+
 export interface Skill {
   name: string;
   category: 'Core' | 'Tools' | 'Analysis';

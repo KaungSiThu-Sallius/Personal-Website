@@ -2,27 +2,57 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { PROJECTS, PROJECT_CATEGORIES } from '../constants';
 import { Github, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { PortfolioTrack } from '../types';
 
 const ITEMS_PER_PAGE = 4;
 
-const Projects: React.FC = () => {
+const TRACK_PROJECT_CATEGORIES: Record<Exclude<PortfolioTrack, 'all'>, string[]> = {
+  analyst: ['SQL', 'Tableau', 'Excel'],
+  scientist: ['Python/Machine Learning', 'LLM'],
+};
+
+const FEATURED_PROJECT_IDS: Record<Exclude<PortfolioTrack, 'all'>, number[]> = {
+  analyst: [3, 5, 6, 1, 2],
+  scientist: [11, 12, 9, 10, 8, 4, 7],
+};
+
+const TRACK_DETAILS: Record<PortfolioTrack, { title: string; description: string }> = {
+  all: {
+    title: 'Featured Projects',
+    description: 'Browse selected work across analytics, machine learning, and data products.',
+  },
+  analyst: {
+    title: 'Data Analyst Projects',
+    description: 'Dashboards and analysis projects using SQL, Tableau, and Excel.',
+  },
+  scientist: {
+    title: 'Data Science Projects',
+    description: 'Predictive modeling, machine learning, and AI projects built with Python.',
+  },
+};
+
+const Projects: React.FC<{
+  track: PortfolioTrack;
+  onTrackChange: (track: PortfolioTrack) => void;
+}> = ({ track, onTrackChange }) => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Filter projects first - useMemo for performance
   const filteredProjects = useMemo(() => {
-    // Create a copy and reverse it to show newest projects (added last in constants) first
-    const sortedProjects = [...PROJECTS].reverse();
+    const roleProjects = track === 'all'
+      ? [...PROJECTS].reverse()
+      : [...PROJECTS].sort((a, b) => (
+        FEATURED_PROJECT_IDS[track].indexOf(a.id) - FEATURED_PROJECT_IDS[track].indexOf(b.id)
+      )).filter(project => TRACK_PROJECT_CATEGORIES[track].includes(project.category));
 
-    return activeCategory === "All"
-      ? sortedProjects
-      : sortedProjects.filter(project => project.category === activeCategory || project.tags.includes(activeCategory));
-  }, [activeCategory]);
+    return roleProjects.filter(project => (
+      activeCategory === "All" || project.category === activeCategory || project.tags.includes(activeCategory)
+    ));
+  }, [activeCategory, track]);
 
-  // Reset to page 1 when category changes
   useEffect(() => {
     setCurrentPage(1);
-  }, [activeCategory]);
+  }, [activeCategory, track]);
 
   // Calculate pagination
   const totalPages = Math.max(1, Math.ceil(filteredProjects.length / ITEMS_PER_PAGE));
@@ -46,14 +76,39 @@ const Projects: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-800 mb-4">Featured Projects</h2>
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-800 mb-4">{TRACK_DETAILS[track].title}</h2>
           <div className="w-20 h-1 bg-sage-400 mx-auto rounded-full mb-8"></div>
+          <p className="mx-auto mb-8 max-w-2xl text-slate-500">{TRACK_DETAILS[track].description}</p>
 
-          {/* Filter Buttons */}
-          <div className="flex flex-wrap justify-center gap-2 mb-8">
+          <div className="mb-6 flex flex-wrap justify-center gap-2" aria-label="Filter projects by role">
+            {([
+              ['all', 'All projects'],
+              ['analyst', 'Data Analyst'],
+              ['scientist', 'Data Scientist'],
+            ] as const).map(([value, label]) => (
+              <button
+                key={value}
+                type="button"
+                onClick={() => {
+                  onTrackChange(value);
+                  setActiveCategory('All');
+                }}
+                aria-pressed={track === value}
+                className={`rounded-full px-5 py-2 text-sm font-medium transition-all duration-300 ${track === value
+                  ? 'bg-slate-800 text-white shadow-md'
+                  : 'border border-slate-200 bg-white text-slate-600 hover:border-sage-300 hover:text-sage-600'
+                  }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+
+          <div className="mb-8 flex flex-wrap justify-center gap-2" aria-label="Filter projects by category">
             {PROJECT_CATEGORIES.map((category) => (
               <button
                 key={category}
+                type="button"
                 onClick={() => setActiveCategory(category)}
                 aria-pressed={activeCategory === category}
                 className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeCategory === category
@@ -65,6 +120,9 @@ const Projects: React.FC = () => {
               </button>
             ))}
           </div>
+          <p className="mb-2 text-sm text-slate-400" aria-live="polite">
+            Showing {filteredProjects.length} {filteredProjects.length === 1 ? 'project' : 'projects'}
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 min-h-[500px]">
