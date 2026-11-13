@@ -6,7 +6,7 @@ export const USER_INFO = {
   title: "Junior Data Scientist | Data Analyst",
   tagline: "Turning raw data into actionable insights through predictive modeling and visualization.",
   about: "Data Scientist with a focus on predictive modeling and business intelligence. I specialize in uncovering hidden patterns within complex datasets to drive smarter, data-backed decision-making using Python, SQL, Tableau and Machine Learning.",
-  profileImage: "./assets/my_img.png",
+  profileImage: '/assets/new_profile.png',
   resumeUrl: "./resume.pdf",
   email: "kaungsithu.sallius@gmail.com",
   linkedin: "https://www.linkedin.com/in/kaung-si-thu01",
